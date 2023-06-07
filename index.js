@@ -6,6 +6,7 @@ const logs = require("discord-logs")
 const { handleLogs } = require("./Handlers/handleLogs")
 const { loadEvents } = require("./Handlers/eventHandler")
 const { loadCommands } = require("./Handlers/commandHandler")
+require("./server")
 
 const client = new Client({
    intents: [Object.keys(GatewayIntentBits)],
@@ -35,8 +36,6 @@ process.on("unhandledRejection", (reason, p) => {
 process.on("uncaughtException", (error, origin) => {
    console.log(error, origin)
 })
-
-module.exports = client
 
 handleLogs(client)
 loadEvents(client)
