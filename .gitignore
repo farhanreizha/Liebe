@@ -1,0 +1,4 @@
+node_module/
+config.json
+pnpm-*
+node_modules
