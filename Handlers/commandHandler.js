@@ -32,8 +32,11 @@ async function loadCommands(client) {
    const clientId = client.config.clientId
    const guildId = client.config.guildId
    try {
-      await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandArray }).catch(console.error)
-      await rest.put(Routes.applicationCommands(clientId), { body: commandArray }).catch(console.error)
+      if (process.env.NODE_ENV === "development") {
+         await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandArray }).catch(console.error)
+      } else {
+         await rest.put(Routes.applicationCommands(clientId), { body: commandArray }).catch(console.error)
+      }
    } catch (error) {
       console.error(error)
    }
