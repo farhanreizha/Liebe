@@ -45,7 +45,7 @@ module.exports = {
          })
       }
 
-      queue.setVolume(voiceChannel, volume)
+      queue.setVolume(volume)
       await interaction.reply({
          embeds: [require("../../utils/embeed")(client, { description: `✅ | The volume has been changed to: ${volume}%/200%` })],
          ephemeral: true,
