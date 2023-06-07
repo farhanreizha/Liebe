@@ -33,6 +33,7 @@ async function loadCommands(client) {
    const guildId = client.config.guildId
    try {
       await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandArray }).catch(console.error)
+      await rest.put(Routes.applicationCommand(clientId), { body: commandArray }).catch(console.error)
    } catch (error) {
       console.error(error)
    }
