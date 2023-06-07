@@ -1,10 +1,11 @@
 {
-   "name": "liebe-bot",
+   "name": "liebe",
    "version": "1.0.0",
    "type": "commonjs",
    "description": "",
    "main": "index.js",
    "scripts": {
+      "start": "node .",
       "dev": "nodemon .",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
