@@ -5,7 +5,7 @@ module.exports = {
    data: new SlashCommandBuilder()
       .setName("volume")
       .setDescription("Change the volume of the currently playing song (0-200)!")
-      .addIntegerOption((option) => option.setName("volume").setDescription("10 = 10%").setMaxValue(200).setMinValue(0).setRequired(true)),
+      .addNumberOption((option) => option.setName("volume").setDescription("10 = 10%").setMaxValue(200).setMinValue(0).setRequired(true)),
 
    /**
     *
@@ -14,7 +14,7 @@ module.exports = {
     * @returns
     */
    async execute(interaction, client) {
-      const volume = interaction.options.getInteger("volume")
+      const volume = interaction.options.getNumber("volume")
       const voiceChannel = interaction.member.voice.channel
       const queue = await client.distube.getQueue(interaction)
 
