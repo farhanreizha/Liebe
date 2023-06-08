@@ -55,7 +55,7 @@ module.exports = {
       }
 
       if (id) {
-         await queue.jump(interaction, parseInt(id - 1))
+         await queue.jump(parseInt(id - 1))
          try {
             const songSkip = queue.songs[parseInt(id - 1)]
             await interaction.reply({
