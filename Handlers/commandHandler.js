@@ -37,7 +37,7 @@ async function loadCommands(client) {
       const endpoint =
          process.env.NODE_ENV === "production" ? Routes.applicationCommands(currentUser.id) : Routes.applicationGuildCommands(currentUser.id, guildId)
 
-      await rest.put(endpoint, { body: [] }).then(() => console.log(response))
+      await rest.put(endpoint, { body: commandArray }).then(() => console.log(response))
    }
    main()
 
