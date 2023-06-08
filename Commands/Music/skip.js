@@ -59,14 +59,12 @@ module.exports = {
          try {
             const songSkip = queue.songs[parseInt(id - 1)]
             await interaction.reply({
-               embeds: [
-                  new EmbedBuilder().setColor(client.config.colorDefault).setDescription(`⏩ | Moved to song with ID: ${id}: **${songSkip.name}**!`),
-               ],
+               embeds: [require("../../utils/embeed")(client, { description: `⏩ | Moved to song with ID: ${id}: **${songSkip.name}**!` })],
                ephemeral: true,
             })
          } catch (err) {
             await interaction.reply({
-               embeds: [new EmbedBuilder().setColor(client.config.colorError).setDescription(`🚫 | Songs with ID not found: ${id}!`)],
+               embeds: [require("../../utils/embeed")(client, { color: "Red", description: `🚫 | Songs with ID not found: ${id}!` })],
                ephemeral: true,
             })
          }
