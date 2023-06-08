@@ -31,14 +31,11 @@ async function loadCommands(client) {
    const rest = new REST({ version: "10" }).setToken(client.config.token)
    const guildId = client.config.guildId
    async function main() {
-      console.log(process.env.NODE_ENV)
       const currentUser = await rest.get(Routes.user())
       const response =
-         process.env.NODE_ENV === "development" ? "Successfully registered commands for development" : "Successfully released commands in production"
+         process.env.NODE_ENV === "production" ? "Successfully released commands in production" : "Successfully registered commands for development"
       const endpoint =
-         process.env.NODE_ENV === "development"
-            ? Routes.applicationGuildCommands(currentUser.id, guildId)
-            : Routes.applicationCommands(currentUser.id)
+         process.env.NODE_ENV === "production" ? Routes.applicationCommands(currentUser.id) : Routes.applicationGuildCommands(currentUser.id, guildId)
 
       await rest.put(endpoint, { body: [] }).then(() => console.log(response))
    }
