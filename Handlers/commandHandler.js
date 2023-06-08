@@ -32,8 +32,9 @@ async function loadCommands(client) {
    const clientId = client.config.clientId
    const guildId = client.config.guildId
    try {
-      await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandArray }).catch(console.error)
-      await rest.put(Routes.applicationCommands(clientId), { body: commandArray }).catch(console.error)
+      const endpoint =
+         process.env.NODE_ENV === "production" ? Routes.applicationCommands(clientId) : Routes.applicationGuildCommands(clientId, guildId)
+      await rest.put(endpoint, { body: commandArray }).catch(console.error)
    } catch (error) {
       console.error(error)
    }
