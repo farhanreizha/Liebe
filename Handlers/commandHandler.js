@@ -29,15 +29,10 @@ async function loadCommands(client) {
    }
 
    const rest = new REST({ version: "10" }).setToken(client.config.token)
-   const guildId = client.config.guildId
    async function main() {
       const currentUser = await rest.get(Routes.user())
-      const response =
-         process.env.NODE_ENV === "production" ? "Successfully released commands in production" : "Successfully registered commands for development"
-      const endpoint =
-         process.env.NODE_ENV === "production" ? Routes.applicationCommands(currentUser.id) : Routes.applicationGuildCommands(currentUser.id, guildId)
 
-      await rest.put(endpoint, { body: commandArray }).then(() => console.log(response))
+      await rest.put(Routes.applicationCommands(currentUser.id), { body: commandArray }).then(() => console.log("Successfully registered command"))
    }
    main()
 
