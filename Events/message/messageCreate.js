@@ -40,11 +40,11 @@ module.exports = {
       }
 
       // Anti link system
-      if (message.content.includes("https://") || message.content.includes("http://") || message.content.includes("discord.gg")) {
-         message.delete()
+      // if (message.content.includes("https://") || message.content.includes("http://") || message.content.includes("discord.gg")) {
+      //    message.delete()
 
-         message.channel.send({ content: `${message.author}, don't attempt to send link :(` })
-      }
+      //    message.channel.send({ content: `${message.author}, don't attempt to send link :(` })
+      // }
 
       // AFK System
 
